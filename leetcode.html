@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	//https://leetcode-cn.com/
+	//官方力扣网址
+
+
+// 1.字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串"abcdefg"和数字2，该函数将返回左旋转两位得到的结果"abcdef"。
+
+		/*
+		*
+		* @param {string} s
+		* @param {number} n
+		* @return {string}
+		*/
+
+		// const s = 'abcdef'
+		// const n = 2
+		// var reverseLeftWords = function(s, n) {
+		//    const strOne = s.substr(n);
+		//    const strTwo = s.substr(0, n);
+		//    console.log(strOne + strTwo)
+		//    return strOne + strTwo	
+		// };
+		// reverseLeftWords(s, n);
+
+		//截取字符串的方法
+		//方法1：substring() 方法string.substring(from, to) 方法从 from 位置截取到 to 位置，to 可选，没有设置时默认到末尾。
+		//方法2：substr() 方法string.substr(from, num) 方法从 from 位置截取,可在字符串中截取从开始下标开始的指定num(数目)的字符,如果没有第二个字符串那么就是从要截取的直接到最后一个字符串。
+		//方法3：slice() 方法方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。
+		//第一种方法与第三种方法类似但是不同点是slice（）不会改变原数组
+
+//2.给你一个非负整数 num ，请你返回将它变成 0 所需要的步数。 如果当前数字是偶数，你需要把它除以 2 ；否则，减去 1 。		
+		// 示例 1：
+		// 输入：num = 14
+		// 输出：6
+		// 解释：
+		// 步骤 1) 14 是偶数，除以 2 得到 7 。
+		// 步骤 2） 7 是奇数，减 1 得到 6 。
+		// 步骤 3） 6 是偶数，除以 2 得到 3 。
+		// 步骤 4） 3 是奇数，减 1 得到 2 。
+		// 步骤 5） 2 是偶数，除以 2 得到 1 。
+		// 步骤 6） 1 是奇数，减 1 得到 0 。
+
+		/**
+		 * @param {number} num
+		 * @return {number}
+		 */
+		// var numberOfSteps  = function(num) {
+		//   let i = 0;
+		//   while (num > 0) {
+		//     if (num % 2 === 0) {
+		//       num /= 2;
+		//     } else {
+		//       num--;
+		//     }
+		//     i++;
+		//   }
+		//   return i;
+		// };
+		// console.log(numberOfSteps(14));
+
+// 3.给你一个整数数组 nums，请你返回其中位数为 偶数 的数字的个数。
+
+		// 示例 1：
+		// 输入：nums = [12,345,2,6,7896]
+		// 输出：2
+		// 解释：
+		// 12 是 2 位数字（位数为偶数） 
+		// 345 是 3 位数字（位数为奇数）  
+		// 2 是 1 位数字（位数为奇数） 
+		// 6 是 1 位数字 位数为奇数） 
+		// 7896 是 4 位数字（位数为偶数）  
+		// 因此只有 12 和 7896 是位数为偶数的数字
+
+		/**
+		 * @param {number[]} nums
+		 * @return {number}
+		 */
+
+		// var findNumbers = function(nums) {
+		//     let i = 0
+		//     nums.map(num => {
+		//         if(num.toString().length%2 == 0){
+		//             i++;
+		//         }
+		//     })
+		//     return i
+		// };
+
+		//JS中.map()函数的使用
+
+		// 一、概念
+
+		// map()方法定义在JavaScript的Array中，它返回一个新的数组，数组中的元素为原始数组调用函数处理后的值。
+		// 注意：
+		// map()不会对空数组进行检测
+		// map()不会改变原始数组
+
+		// 二、语法
+
+		// array.map(function(currentValue, index, arr), thisIndex)
+		// 参数说明：
+		// function(currentValue, index, arr)：必须。为一个函数，数组中的每个元素都会执行这个函数。其中函数参数：
+		// currentValue：必须。当前元素的的值。
+		// index：可选。当前元素的索引。
+		// arr：可选。当前元素属于的数组对象。
+		// thisValue：可选。对象作为该执行回调时使用，传递给函数，用作"this"的值。
+
+		// 三、实例
+
+		// 返回由原数组中每个元素的平方组成的新数组：
+		// let array = [1, 2, 3, 4, 5];
+		// let newArray = array.map((item) => {
+		//     return item * item;
+		// })
+		// console.log(newArray)  // [1, 4, 9, 16, 25]
+
+		//toString() 方法可把一个 Number 对象转换为一个字符串，并返回结果。
+		//语法
+		//NumberObject.toString(radix)
+		//param:  radix
+		//radix	可选。规定表示数字的基数，使 2 ~ 36 之间的整数。若省略该参数，则使用基数 10。但是要注意，如果该参数是 10 以外的其他值，则 ECMAScript 标准允许实现返回任意值。
+
+		// var a = 123;
+		// console.log(a.toString(2)); //1111011
+
+
+// 4.实现函数 ToLowerCase()，该函数接收一个字符串参数 str，并将该字符串中的大写字母转换成小写字母，之后返回新的字符串。
+
+		// 示例 1：
+		// 输入: "Hello"
+		// 输出: "hello"
+		// 来源：力扣（LeetCode）
+		// 链接：https://leetcode-cn.com/problems/to-lower-case
+		// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+		// const str = 'HELLO';
+		// const toLowerCase = function(str) {
+  		//   	return str.toLowerCase();
+		// };
+		// console.log(toLowerCase(str));
+		
+		//var message="Hello world!";
+		//var x=message.toUpperCase();
+		//toUpperCase()这个方法是把英文字母都变为大写字母
+		//一个新的字符串，在其中 stringObject 的所有小写字符全部被转换为了大写字符。
+
+		//var message="HELLO WORLD!";
+		//var x=message.toLowerCase();
+		//toLowerCase()这个方法是把英文字母都变成小写字母
+		// let abn = 00001111;
+		// console.log(abn)
+		
+		// var hammingWeight = function(n) {
+		//     let str = n.toString(2).replace(/0/g,'').length;
+		//     console.log(str)
+		//     // let str = n.toString(2)
+		//     // let i = 0;
+		//     // for(let a of str){
+		//     // 	console.log(a)
+		//     //     if(a > 0){
+		//     //         i++;
+		//     //     }
+		//     // }
+		//     // return i
+		//     return str
+		// };
+		// console.log(hammingWeight(abn));
+		
+// 5.给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+
+		// 示例 1:
+
+		// 输入: 123
+		// 输出: 321
+		/**
+		 * @param {number} x
+		 * @return {number}
+		 */
+		//  const x = 123;
+		//  var reverse = function(x) {
+		//       const flag = x > 0 ? '' : '-';
+		//       const str = String(x);
+		//       const arr = str.split('');
+		//       arr.reverse();
+		//       const result = parseInt(`${flag}${arr.join('')}`);
+		//       if (result <= -Math.pow(2, 31) || result >= Math.pow(2, 31)) return 0;
+		//       return result;
+		// };
+		// console.log(reverse(x));
+		
+// 6.给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+
+		// 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+
+		// 示例 1:
+		// 给定数组 nums = [1,1,2], 
+		// 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 
+		// 你不需要考虑数组中超出新长度后面的元素。
+
+		/**
+		 * @param {number[]} nums
+		 * @return {number}
+		 */
+		//    var removeDuplicates = function(nums) {
+		//     for (let i = 0; i < nums.length; i++) {
+		//         if (nums[i + 1]===  nums[i]) {
+		//             nums.splice(i + 1, 1)
+		//             i--
+		//         }
+		//     }
+		//     return nums.length
+		// };
+
+//7.小A 和 小B 在玩猜数字。小B 每次从 1, 2, 3 中随机选择一个，小A 每次也从 1, 2, 3 中选择一个猜。他们一共进行三次这个游戏，请返回 小A 猜对了几次？
+
+		// 输入的guess数组为 小A 每次的猜测，answer数组为 小B 每次的选择。guess和answer的长度都等于3。
+		// 示例 1：
+		// 输入：guess = [1,2,3], answer = [1,2,3]
+		// 输出：3
+		// 解释：小A 每次都猜对了。
+
+		/**
+		 * @param {number[]} guess
+		 * @param {number[]} answer
+		 * @return {number}
+		 */
+		// var game = function(guess, answer) {
+		//     let j = 0
+//     for(let i = 0; i < 3; i++){
+		//         if(guess[i] === answer[i]) j++;
+		//     }
+		//     return j
+		// };
+
+		//一行代码
+		//const game = (guess, answer) => guess.filter((x,i) => x === answer[i]).length;
+
+//8.给你一个以行程长度编码压缩的整数列表 nums 。
+		// 考虑每对相邻的两个元素 [a, b] = [nums[2*i], nums[2*i+1]] （其中 i >= 0 ），每一对都表示解压后有 a 个值为 b 的元素。
+		// 请你返回解压后的列表。
+		
+		// 示例：
+		// 输入：nums = [1,2,3,4]
+		// 输出：[2,4,4,4]
+		// 解释：第一对 [1,2] 代表着 2 的出现频次为 1，所以生成数组 [2]。
+		// 第二对 [3,4] 代表着 4 的出现频次为 3，所以生成数组 [4,4,4]。
+		// 最后将它们串联到一起 [2] + [4,4,4] = [2,4,4,4]。
+
+		// let nums = [1,2,3,4]
+		// var decompressRLElist = function(nums) {
+		//     let arr = [];
+		//     for(let i=0; i< nums.length; i = i+2){
+		//         for(let j=0; j<nums[i]; j++){
+		//             arr.push(nums[i+1]);
+		//         }
+		//     }
+		// 	return arr
+		// };
+		// console.log(decompressRLElist(nums));
+//9.给你一个整数 n，请你帮忙计算并返回该整数「各位数字之积」与「各位数字之和」的差。
+
+	// 示例 1：
+
+	// 输入：n = 234
+	// 输出：15 
+	// 解释：
+	// 各位数之积 = 2 * 3 * 4 = 24 
+	// 各位数之和 = 2 + 3 + 4 = 9 
+	// 结果 = 24 - 9 = 15
+
+		// var subtractProductAndSum = function(n) {
+		// 	let b = n.toString();
+		// 	let sum = 0;
+		// 	let suu = 1;
+		//     for(let i of b ){
+		//     	let a = Number(i)
+		//         sum = sum + a;
+		//         suu = suu * a;
+		//     }
+		//     return suu - sum
+		// };
+		// console.log(subtractProductAndSum(n));
+		// let arr = [1, 2, 3, 4]
+		// console.log(arr.reverse())
+//10.给定两个排序后的数组 A 和 B，其中 A 的末端有足够的缓冲空间容纳 B。 编写一个方法，将 B 合并入 A 并排序。
+
+// 初始化 A 和 B 的元素数量分别为 m 和 n。
+
+// 来源：力扣（LeetCode）
+// 链接：https://leetcode-cn.com/problems/sorted-merge-lcci
+// 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+//第一种方法产生新的数组
+		// var merge = function(A, m, B, n) {
+		//     const arrA = A.slice(0, m);
+		//     const arrB = B.slice(0, n);
+		//     let arrC = arrA.concat(arrB);
+		//     return arrC.sort();
+		// };
+
+		// console.log(merge([1,2,3,0,0,0], 3, [2,5,6], 3));
+		/**
+		 * @param {number[]} A
+		 * @param {number} m
+		 * @param {number[]} B
+		 * @param {number} n
+		 * @return {void} Do not return anything, modify A in-place instead.
+		 */
+		// var merge = function(A, m, B, n) {
+		//     A.splice(m, A.length);
+		//     B.splice(n, B.length);
+		//     A.push.apply(A, B)
+		//     return A.sort((a, b) => a - b);
+		// };
+// 		console.log(merge([1,2,3,0,0,0], 3, [2,5,6], 3));
+
+	// 1、concat
+		// js的Array对象提供了一个叫concat()方法，连接两个或更多的数组，并返回结果。
+		// var c = a.concat(b); //c=[1,2,3,4,5,6];
+		// 这里有一个问题，concat方法连接a、b两个数组后，a、b两个数组的数据不变，同时会返回一个新的数组。这样当我们需要进行多次的数组合并时，会造成很大的内存浪费，如果是数据量比较小的时候，还可以勉强用，如果数据量大的时候，这个就不妥了，所以这个方法肯定不是最好的。
+	// 2、for循环
+		// 大概的思路是：遍历其中一个数组，把该数组中的所有元素依次添加到另外一个数组中。直接上代码：
+		// for( var i in b)
+		// {
+		//   a.push(b[i]);
+		// }
+		// 这样的写法可以解决第一种方案中对内存的浪费，但是会有另一个问题：丑！这么说不是没有道理，如果能只用一行代码就搞定，岂不快哉~
+		var myObject={
+		　　a:1,
+		　　b:2,
+		　　c:3
+		}
+		for (var key in myObject) {
+		  console.log(key);
+		}
+	// 3、apply
+		// 函数的apply方法有一个特性，那就是func.apply(obj,argv)，argv是一个数组。所以我们可以利用这点，直上代码：
+		// a.push.apply(a,b);
+		// 调用a.push这个函数实例的apply方法，同时把，b当作参数传入，这样a.push这个方法就会遍历b数组的所有元素，达到合并的效果。
+		// 这里可能有点绕，我们可以把b看成[4,5,6]，变成这样：
+		// a.push.apply(a,[4,5,6]);
+		// 然后上面的操作就等同于：
+		// a.push(4,5,6);
+		// 这样就很清楚了！
+		// 另外，还要注意两个小问题：
+		// 1）以上3种合并方法并没有考虑过a、b两个数组谁的长度更小。
+		// 所以好的做法是预先判断a、b两个数组哪个更大，然后使用大数组合并小数组，这样就减少了数组元素操作的次数！
+		// 2）有时候我们不希望原数组（a、b）改变，这时就只能使用concat了。
+		// 以上就是本文的全部内容，希望对大家的学习有所帮助，也希望大家多多支持脚本之家。
+
+	// 	sort排序
+
+
+		//     js中用方法sort()为数组排序。sort()方法有一个可选参数，是用来确定元素顺序的函数。如果这个参数被省略，那么数组中的元素将按照ASCII字符顺序进行排序。
+
+		// 例如：
+
+		// 　　var arr = ["a", "b", "A", "B"];
+		// 　　arr.sort();
+		// 　　console.log(arr);
+
+		// 因为字母A、B的ASCII值分别为65、66，而a、b的值分别为97、98，所以上面输出的结果是 [“A”, “B”, “a”, “b”] 。
+
+		// 当我们对数字进行排序的时候
+
+		// 　　var arr = [15, 8, 25, 3];
+		// 　　arr.sort();
+		// 　　console.log(arr);
+
+		// 结果是 [15, 25, 3, 8] 。其实，sort方法会调用每个数组项的toString()方法，得到字符串，然后再对得到的字符串进行排序。虽然数值15比3大，但在进行字符串比较时”1”则排在”3”前面。显然，这种结果不是我们想要的，这时，sort()方法的参数就起到了作用，我们把这个参数叫做比较函数。
+
+		// 对数组数字排序用函数来改变，修改方法如下：
+
+		// 　　var arr = [23, 9, 4, 78, 3];
+		// 　　var compare = function (x, y) {//比较函数
+		// 　　　　if (x < y) {
+		// 　　　　　　return -1;
+		// 　　　　} else if (x > y) {
+		// 　　　　　　return 1;
+		// 　　　　} else {
+		// 　　　　　　return 0;
+		// 　　　　}
+		// 　　}
+		// 　　console.log(arr.sort(compare)); 
+
+		// 结果为 [3, 4, 9, 23, 78] ，返回了我们想要的结果
+
+		// 如果要按降序排序，比较函数写成这样即可：
+
+		// 　　var compare = function (x, y) {
+		// 　　　　if (x < y) {
+		// 　　　　　　return 1;
+		// 　　　　} else if (x > y) {
+		// 　　　　　　return -1;
+		// 　　　　} else {
+		// 　　　　　　return 0;
+		// 　　　　}
+		// 　　}
+
+		// 我们还可以对上面的函数进行简化的写法：
+
+		// 　　var arr = [23, 9, 4, 78, 3];
+		// 　　　　//升序
+		// 　　　　　　arr.sort(function(a,b){
+		// 　　　　　　　　retun a-b;
+		// 　　　　　　});
+		// 　　　　//降序
+		// 　　　　　　arr.sort(function(a,b){
+		// 　　　　　　　　retun b-a;
+		// 　　　　　　});
+//11、给你一个数组 nums，对于其中每个元素 nums[i]，请你统计数组中比它小的所有数字的数目。
+
+		// 换而言之，对于每个 nums[i] 你必须计算出有效的 j 的数量，其中 j 满足 j != i 且 nums[j] < nums[i] 。
+		// 以数组形式返回答案。
+		// 示例 1：
+		// 输入：nums = [8,1,2,2,3]
+		// 输出：[4,0,1,1,3]
+		// 解释： 
+		// 对于 nums[0]=8 存在四个比它小的数字：（1，2，2 和 3）。 
+		// 对于 nums[1]=1 不存在比它小的数字。
+		// 对于 nums[2]=2 存在一个比它小的数字：（1）。 
+		// 对于 nums[3]=2 存在一个比它小的数字：（1）。 
+		// 对于 nums[4]=3 存在三个比它小的数字：（1，2 和 2）。
+		//第一种解题方法
+		/**
+		 * @param {number[]} nums
+		 * @return {number[]}
+		 */
+		// var smallerNumbersThanCurrent = function(nums) {
+		//     let n =  0;
+		//     let arr = [];
+		//     for(let j = 0; j < nums.length; j++){
+		//         for(let i = 0; i < nums.length; i++){
+		//             if(nums[j] > nums[i]){
+		//               n++;
+		//             }
+		//         }
+		//         arr.push(n);
+		//         n = 0;
+		//     } 
+		//     return arr;
+		// };
+		// console.log(smallerNumbersThanCurrent([8,1,2,2,3]))
+
+		//第二种解题方法
+		// var smallerNumbersThanCurrent = function (nums) {
+		//     let a = nums.reduce((prev, curr) => {
+		//         prev.push(nums.filter(n => n < curr).length)
+		//         return prev;
+		//     }, [])
+		//     return a
+		// };
+		// console.log(smallerNumbersThanCurrent([8,1,2,2,3]))
+		// reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+		// reduce() 可以作为一个高阶函数，用于函数的 compose。
+		// 注意: reduce() 对于空数组是不会执行回调函数的。
+		// filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+		// 注意： filter() 不会对空数组进行检测。
+		// 注意： filter() 不会改变原始数组。
+
+//12.请实现一个函数，把字符串 s 中的每个空格替换成"%20"。
+
+	// 示例 1：
+
+	// 输入：s = "We are happy."
+	// 输出："We%20are%20happy."
+	/**
+	 * @param {string} s
+	 * @return {string}
+	 */
+	// var replaceSpace = function(s) {
+	//     return s.replace(/ /g, '%20')
+	// };
+//13. 给定字符串J 代表石头中宝石的类型，和字符串 S代表你拥有的石头。 S 中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
+	// J 中的字母不重复，J 和 S中的所有字符都是字母。字母区分大小写，因此"a"和"A"是不同类型的石头。
+	// 示例 1:
+	// 输入: J = "aA", S = "aAAbbbb"
+	// 输出: 3
+		// var numJewelsInStones = function(J, S) {
+		//     let j = 0;
+		//     for(let i of J){
+		//         for(let a of S){
+		//             if(i === a){
+		//                 j++
+		//             }
+		//         }
+		//     }
+		//     return j
+		// };
+
+		// var numJewelsInStones = function(J, S) {
+		// return S.split('').filter(s => J.includes(s)).length
+		// };
+//14.给你一个整数 n，请你返回 任意 一个由 n 个 各不相同 的整数组成的数组，并且这 n 个数相加和为 0 。
+		// 示例 1：
+		// 输入：n = 5
+		// 输出：[-7,-1,1,3,4]
+		// 解释：这些数组也是正确的 [-5,-1,1,2,3]，[-3,-1,2,-2,4]。
+
+		// var sumZero = function(n) {
+		//     let arr = new Array(n).fill(0);
+		//     let sun = 0;
+		//     for(let i=0; i<n-1; i++){
+		//         arr[i] =  Math.round(5 - Math.random()*10);
+		//         sun = sun + arr[i];
+		//     }
+		//     arr[n-1] = 0 -  sun;
+		//     return arr
+		// };
+		// console.log(sumZero(5));
+
+		//fill() 方法用于将一个固定值替换数组的元素。
+
+		// 需要了解的 Math 对象方法
+
+		// 方法     				描述
+		// ceil(x)			对数进行上舍入，即向上取整。
+		// floor(x)		对 x 进行下舍入，即向下取整。
+		// round(x)		四舍五入。
+		// random()		返回 0 ~ 1 之间的随机数，包含 0 不包含 1。
+//15输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数 999。
+		// 示例 1:
+		// 输入: n = 1
+		// 输出: [1,2,3,4,5,6,7,8,9]
+		// /**
+		//  * @param {number} n
+		//  * @return {number[]}
+		//  */
+		// var printNumbers = function(n) {
+		//     let arr = []
+		//     for(let i=1; i<Math.pow(10, n);i++){
+		//         arr.push(i)
+		//     }
+		//     return arr
+		// };
+
+
+		// pow() 方法可返回 x 的 y 次幂的值。
+		// 语法
+		// Math.pow(x,y)
+		// 参数				描述
+		// x			必需。底数。必须是数字。
+		// y			必需。幂数。必须是数字。
+
+
+		var getDecimalValue = function(head) {
+		    let tatol = 0;
+		    head.map((num, index) =>{
+		    	if(num === 1){
+		       		 tatol += num * Math.pow(2, index);
+		    	}
+		    	console.log(tatol);
+		    })
+		    return tatol
+		};
+		console.log(getDecimalValue([1,0,1]))
+	</script>
+</body>
+</html>
