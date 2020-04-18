@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -571,6 +571,119 @@
 		// 如果省略该参数或其值为 0，则数字将以 10 为基础来解析。如果它以 “0x” 或 “0X” 开头，将以 16 为基数。
 
 		// 如果该参数小于 2 或者大于 36，则 parseInt() 将返回 NaN。
+
+//16. 自除数 是指可以被它包含的每一位数除尽的数。
+		// 例如，128 是一个自除数，因为 128 % 1 == 0，128 % 2 == 0，128 % 8 == 0。
+		// 还有，自除数不允许包含 0 。
+		// 给定上边界和下边界数字，输出一个列表，列表的元素是边界（含边界）内所有的自除数。
+		// 输入： 
+		// 上边界left = 1, 下边界right = 22
+		// 输出： [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+
+		var selfDividingNumbers = function(left, right) {
+		    let arr = [];
+		    let num = [];
+		    
+		    for(let i=left; i<=right; i++){
+		        arr.push(i);
+		    }
+		    for(let j=0; j<arr.length; j++){
+		    	let karrs =[];
+		        for(let k of arr[j].toString()){
+		        	karrs.push(k);
+		        }
+	        	let abs = karrs.every(item => {
+	        		return arr[j]%item == 0
+	        	})
+	        	if(abs){
+	        		num.push(arr[j])
+	        	}
+		    }
+		    return num
+		};
+		console.log(selfDividingNumbers(1,22))
+		// every()与some()方法都是JS中数组的迭代方法。
+		// every()是对数组中每一项运行给定函数，如果该函数对每一项返回true,则返回true。
+		// some()是对数组中每一项运行给定函数，如果该函数对任一项返回true，则返回true。
+		// var arr = [ 1, 2, 3, 4, 5, 6 ]; 
+		// console.log( arr.some( function( item, index, array ){ 
+		//     console.log( 'item=' + item + ',index='+index+',array='+array ); 
+		//     return item > 3; 
+		// })); 
+		// console.log( arr.every( function( item, index, array ){ 
+		//     console.log( 'item=' + item + ',index='+index+',array='+array ); 
+		//     return item > 3; 
+		// }));
+		// some一直在找符合条件的值，一旦找到，则不会继续迭代下去。 
+		// every从迭代开始，一旦有一个不符合条件，则不会继续迭代下去
+// 17.给定一个正整数，输出它的补数。补数是对该数的二进制表示取反。
+		// 示例 1:
+		// 输入: 5
+		// 输出: 2
+		// 解释: 5 的二进制表示为 101（没有前导零位），其补数为 010。所以你需要输出 2 
+
+		// var findComplement = function(num) {
+		//     let arrs = '';
+		//     let str = num.toString(2);
+		//     for(let i of str){
+		//     	console.log(i)
+
+		//         if(i=='1'){
+		//             i = '0';
+		//         }else{
+		//             i = '1';
+		//         }
+		//          arrs += i;
+		//     }
+		//     return parseInt(arrs, 2)
+		// };
+
+		// console.log(findComplement(5));
+//18、给你一份『词汇表』（字符串数组） words 和一张『字母表』（字符串） chars。
+
+		// 假如你可以用 chars 中的『字母』（字符）拼写出 words 中的某个『单词』（字符串），那么我们就认为你掌握了这个单词。
+		// 注意：每次拼写（指拼写词汇表中的一个单词）时，chars 中的每个字母都只能用一次。
+		// 返回词汇表 words 中你掌握的所有单词的 长度之和。
+		// 示例 1：
+		// 输入：words = ["cat","bt","hat","tree"], chars = "atach"
+		// 输出：6
+		// 解释： 
+		// 可以形成字符串 "cat" 和 "hat"，所以答案是 3 + 3 = 6。
+		var countCharacters = function(words, chars) {
+			//字符串的长度
+			let numChars = chars.length;
+			//拷贝字符串
+			let copyChars = chars;
+			//用于最后的输出判断是否跳出循环
+			let dapCirculate = 0;
+			// 最后的输出结果
+			let nums = 0;
+			// 循环数组
+		    for(let i=0; i<words.length; i++){
+		    	//重置字符串
+		    	chars = copyChars;
+		    	//重置跳出
+		    	dapCirculate = 0;
+		    	//内在逻辑当一个字符串的字符数到户大于chars的字符串长度那么就一定不会是所熟记的单词
+		    	if(words[i].length <  numChars){
+		    		for(let j of words[i]){
+			            if(chars.indexOf(j) == -1){
+			            		dapCirculate = 1;
+				                break
+				            }else {
+				            	//截取单词的循环的独立的字符
+				                chars = chars.substring(0, chars.indexOf(j)) + chars.substring(chars.indexOf(j)+1)
+				            }
+				        }
+				        // 进行判断1、chars 的长度等于单词的长度并且截取之后的字符为零且跳出循环。2、当截取之后chars里还有字符串且跳出循环那么判断成立
+				        if((numChars === words[i].length && chars.length == 0) && abc !== 1 || chars.length > 0 && abc !== 1){
+				            nums += words[i].length
+				        }
+			    }
+		    }
+		    return nums
+		};
+		console.log(countCharacters(["cat","bt","hat","tree"],"atach"))
 
 	</script>
 </body>
