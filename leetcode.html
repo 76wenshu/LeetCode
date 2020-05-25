@@ -873,20 +873,87 @@ const dateDayStart = +new Date()
  * @param {number} extraCandies
  * @return {boolean[]}
  */
-var kidsWithCandies = function(candies, extraCandies) {
-	const  max  = Math.max(...candies)
-	console.log(Math.max(candies),"123")
-   return candies.map(item => {
-       if(item + extraCandies >=max ){
-           return true
-       }else {
-           return false
-       }
-   })
-};
-console.log(kidsWithCandies([2,3,5,1,3],3))
+// var kidsWithCandies = function(candies, extraCandies) {
+// 	const  max  = Math.max(...candies)
+//    return candies.map(item => {
+//        if(item + extraCandies >=max ){
+//            return true
+//        }else {
+//            return false
+//        }
+//    })
+// };
+// console.log(kidsWithCandies([2,3,5,1,3],3))
+//27给你一个整数 n，请你返回一个含 n 个字符的字符串，其中每种字符在该字符串中都恰好出现 奇数次 。
+// 返回的字符串必须只含小写英文字母。如果存在多个满足题目要求的字符串，则返回其中任意一个即可。
+// 示例 1：
+// 输入：n = 4
+// 输出："pppz"
+// 解释："pppz" 是一个满足题目要求的字符串，因为 'p' 出现 3 次，且 'z' 出现 1 次。当然，还有很多其他字符串也满足题目要求，比如："ohhh" 和 "love"。
+// var generateTheString = function(n) {
+//     if(n===0)return '';
+//     if(n===1)return 'a';
+//     let res = '';
+//     if (n % 2 === 0){
+//         res += 'b';
+//         for(let i = 1; i <= n-1; i++){
+//             res += 'a';
+//         }
+//     }else{
+//         for(let i = 1; i <= n; i++){
+//             res += 'a';
+//         }
+//     }
+//     return res;
+// };
+//28给你一个仅由数字 6 和 9 组成的正整数 num。
+// 你最多只能翻转一位数字，将 6 变成 9，或者把 9 变成 6 。
+// 请返回你可以得到的最大数字。
+// 示例 1：
 
-
+// 输入：num = 9669
+// 输出：9969
+// 解释：
+// 改变第一位数字可以得到 6669 。
+// 改变第二位数字可以得到 9969 。
+// 改变第三位数字可以得到 9699 。
+// 改变第四位数字可以得到 9666 。
+// 其中最大的数字是 9969 。
+/**
+ * @param {number} num
+ * @return {number}
+ */
+//  var maximum69Number  = function(num) {
+// 	 const nums = num.toString();
+//     const arrs  = [];
+//     for(let i = 0; i<nums.length; i++ ){
+// 		debugger
+// 		const a = nums.substring(0,i);
+// 		const b = nums.substring(i+1);
+// 		const ab = `${a}9${b}`;
+//         arrs.push(parseInt(ab))
+//     }
+//    return  Math.max(...arrs)
+// };
+// console.log(maximum69Number(9669),'13')
+//29给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+// 说明：
+// 你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
+// 示例 1:
+// 输入: [2,2,1]
+// 输出: 1
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+//  var singleNumber = function(nums) {
+//     let num = nums.sort()
+//     for(let i=0;i<num.length; i++){
+//         if(nums[i]!==num[i+1] && num[i]!==num[i-1] ){
+//             return num[i];
+//         }
+//     }
+// };
 	</script>
 
 </body>
