@@ -954,6 +954,126 @@ const dateDayStart = +new Date()
 //         }
 //     }
 // };
+//30你和你的朋友，两个人一起玩 Nim 游戏：桌子上有一堆石头，每次你们轮流拿掉 1 - 3 块石头。 拿掉最后一块石头的人就是获胜者。你作为先手。
+// 你们是聪明人，每一步都是最优解。 编写一个函数，来判断你是否可以在给定石头数量的情况下赢得游戏。
+// 示例:
+// 输入: 4
+// 输出: false 
+// 解释: 如果堆中有 4 块石头，那么你永远不会赢得比赛；
+//      因为无论你拿走 1 块、2 块 还是 3 块石头，最后一块石头总是会被你的朋友拿走。
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+//  var canWinNim = function(n) {
+//      return n%4;
+// };
+//错误解析如果是5快的话自己可以先取一块剩下的就是你自己的
+
+// var intersection = function(nums1, nums2) {
+//     const arrs =[];
+// 	debugger
+//     const arr1 = Array.from(new Set(nums1));
+// 	console.log(arr1)
+//     const arr2 = Array.from(new Set(nums2));
+//     for(let i=0;i<arr1.length;i++){
+//         for(let j=0;j<arr2.length;j++){
+//             if(arr1[i]===arr2[j]){
+//                 arrs.push(arr1[i])
+//             }
+//         }
+
+//     }
+// return arrs
+
+// };
+// console.log(intersection([1,2,2,1],[2,2]))
+// var minSubsequence = function(nums) {
+//         var arrsNum = nums.sort((a,b)=>{return b-a});
+// 		let arrsA =[];
+// 		let sumA = null;
+//         for(let i=0;i<arrsNum.length;i++){
+//             arrsA.push(arrsNum[i])
+//             sumA += arrsNum[i]
+// 		let sumB = null;
+//             for(let j=i+1;j<arrsNum.length;j++){
+//                 sumB += arrsNum[j]   
+//             }
+// 			if(sumA>sumB){
+//                  return arrsA
+//                 }
+//         }
+// };
+// console.log(minSubsequence([4,3,10,9,8]))
+//31给定键盘使用判断
+// 	var findWords = function(words) {
+// 		let arrs =[];
+// 		const arr1 = 'qwertyuiop';
+// 		const arr2 = 'asdfghjkl'
+// 		const arr3 = 'zxcvbnm'
+// 		for(let i=0; i<words.length; i++){
+// 			debugger
+// 			let arr4 = Array.from(new Set(words[i].toLowerCase().split(""))).sort();
+// 		if(arr4.every(item =>{return arr1.includes(item)}) ||arr4.every(item =>{return arr2.includes(item)})||arr4.every(item =>{return arr3.includes(item)}) ){
+// 			arrs.push(words[i])
+// 		}
+// 		}
+// 		return arrs
+// 	};
+// console.log(findWords(["a","b"]))
+
+// var hammingWeight = function(n) {
+// 	let i = 0
+// 	debugger
+//     const arrs = n.toString()
+// 	for(let j of arrs){
+// 		if(j ==='1'){
+// 			i++
+// 		}
+// 	}
+// 	debugger
+//     return i
+// };
+// console.log(hammingWeight(00000000000000000000000000001011))
+
+// var minStartValue = function(nums) {
+// 		let abs = nums.length
+//         for(let j =0; j<10000000000000000000; j++){
+// 				if(nums.length>abs ){
+// 					nums.shift();
+// 				}
+//                nums.unshift(j)
+// 			  let  sum =0
+// 			  let arrs =[];
+//                for(let i=0; i<nums.length; i++){ 
+//                    sum =sum + (nums[i])
+//                    arrs.push(sum)
+//                }
+//                if(arrs.every(item=>{return item>0}) && arrs.some(item=> {return item===1 })){
+//                    return j
+//                }
+//         }
+// };
+// console.log(minStartValue([-3,2,-3,4,2]))
+
+var abs = function(nums){
+	const str = nums.toString();
+	const strNum = nums.toString().indexOf(".")+1
+	let strNM = str.substring(strNum)
+	switch(strNM.length){
+		case 1:
+		strNM = `${strNM}0%` 
+		break;
+		case 2:
+		strNM = `${strNM}%` 
+		break;
+		default:
+		strNM = `${strNM.substr(0,2)}.${strNM.substring(2)}%`
+		break;
+	}
+	return strNM
+}
+console.log(abs(0.1235))
 	</script>
 
 </body>
