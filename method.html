@@ -16,8 +16,11 @@
 		*@param  number {0.00023}
 		*@return  string {0.023%}
 		*/
-		var abs = function(nums){
-			let str = nums.toString();
+		var float = function(nums){
+			let str=''
+			if(nums){
+			    str = nums.toString();
+			}
 			const eNum = str.indexOf("e")
 			if(eNum !== -1){
 				const numEnd = str.substring(eNum+2);
@@ -53,7 +56,25 @@
 				return strNM
 			}
 		}
-		console.log(0.123456789123456789123)
+		console.log(float(0.0000006789123456789123))
+		/**
+		*数字的千分位处理
+		*对于数字的千分位处理的问题
+		*/
+		 var abs = function(nums){
+			if(nums && String(nums).includes(".")){
+				const str = String(nums);
+				const subNumber  = String(nums).indexOf(".");
+				const intStr = parseInt(str.substring(0,subNumber),10).toLocaleString()
+				const floatStr = str.substring(subNumber);
+				return `${intStr}${floatStr}`
+			}else if(nums){
+				return nums.toLocaleString()
+			}else{
+				return nums
+			}
+		 }
+		 console.log(abs(132456789))
     </script>
 </body>
 </html>
