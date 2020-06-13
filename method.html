@@ -13,8 +13,8 @@
 		*切记不能用浮点型计算之后用于等于的计算
 		*浮点型数据的最高精度是17位，多的就会被取消掉（字符串都没办法拼接，因为传值的时候就被截去）
 		*如果转化成科学技术法的形式那么将会有多少位，保留多少位（因为转化成科学计数法的形式可用字符串进行拼接）
-		*@param  number {0.00023}
-		*@return  string {0.023%}
+		*@param  Number (nums) {0.00023}
+		*@return  String {0.023%}
 		*/
 		var float = function(nums){
 			let str=''
@@ -60,6 +60,8 @@
 		/**
 		*数字的千分位处理
 		*对于数字的千分位处理的问题
+		*@param Nmuber(nums) {1000.12}
+		*@return String {1,000.12}
 		*/
 		 var abs = function(nums){
 			if(nums && String(nums).includes(".")){
@@ -75,7 +77,11 @@
 			}
 		 }
 		 console.log(abs(132456789))
-		/*判断时间是否一年之内 */
+		/*判断传入的两个时间点是否一年之内
+		*@param  Date (beginDate ,endDate) { new Date() }
+		*@return Boolean {false, true}
+		*
+		**/
 		 function getPassYearFormatDate(beginDate,endDate) {
 			 if(beginDate && endDate &&  beginDate.getTime()<endDate.getTime()){
 				const date = new Date();
