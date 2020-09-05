@@ -1688,6 +1688,28 @@ nums       index     target
 //   }
 //   return s
 // };
+// var average = function(salary) {
+//     const maxNumber = Math.max(...salary);
+//     const minNumber = Math.min(...salary);
+// 	debugger
+//     const maxIndex = salary.findIndex(item =>  item === maxNumber);
+//     salary.splice(maxIndex,1)
+//     const minIndex = salary.findIndex(item =>  item === minNumber);
+//     salary.splice(minIndex,1)
+//     return salary.reduce((pre,cry)=>{
+//         return pre + cry
+//     })/salary.length
+
+// };
+// 	var average = function(salary) {
+// 		const array = salary.sort((a,b)=> a-b)
+// 		const spliceArray = array.slice(1,array.length-1)
+// 		return spliceArray.reduce((pre,cry)=>{
+// 			return pre + cry
+// 		})/spliceArray.length
+
+// 	};
+// console.log(average([25000,48000,57000,86000,33000,10000,42000,3000,54000,29000,79000,40000]))
 
 	</script>
 
