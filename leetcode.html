@@ -1742,6 +1742,29 @@ nums       index     target
 //    return parseInt(asrr.join(''),2)
 // };
 // console.log(bitwiseComplement(5))
+// 387. 字符串中的第一个唯一字符
+// 给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+// 示例：
+// s = "leetcode"
+// 返回 0
+// s = "loveleetcode"
+// 返回 2
+// var firstUniqChar = function(s) {
+// 	debugger
+//     let arrs=s.split('');
+//     let objectArrs = arrs.reduce((pre,next)=>{
+//        pre[next] =  (pre[next]+1) || 1;
+//        return pre
+//     },{})
+//     let arrs2 = []
+//     for(let j in objectArrs){
+//         if(objectArrs[j]===1){
+//             arrs2[arrs2.length] = j
+//         }
+//     }
+//     return s.indexOf(arrs2[0])
+// };
+// console.log(firstUniqChar("leetcode"))
 	</script>
 
 </body>
