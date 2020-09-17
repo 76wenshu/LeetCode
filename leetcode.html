@@ -1908,6 +1908,40 @@ nums       index     target
 //  var countSegments = function(s) {
 //      return s.split(" ").filter((item) => item !== "").length;
 // };
+// 1408. 数组中的字符串匹配
+// 给你一个字符串数组 words ，数组中的每个字符串都可以看作是一个单词。请你按 任意 顺序返回 words 中是其他单词的子字符串的所有单词。
+// 如果你可以删除 words[j] 最左侧和/或最右侧的若干字符得到 word[i] ，那么字符串 words[i] 就是 words[j] 的一个子字符串。
+// 示例 1：
+// 输入：words = ["mass","as","hero","superhero"]
+// 输出：["as","hero"]
+// 解释："as" 是 "mass" 的子字符串，"hero" 是 "superhero" 的子字符串。
+// ["hero","as"] 也是有效的答案。
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+//  var stringMatching = function(words) {
+//     let arrs=[]
+//     for(let i=0;i<words.length;i++){
+//         for(let j=0;j<words.length;j++){
+//         if(words[i].includes(words[j]) && words[i]!==words[j]){
+//             arrs[arrs.length] = words[j]
+//         }
+
+//     }
+
+//     }
+//     return Array.from(new Set(arrs))
+// };
+// 剑指 Offer 58 - I. 翻转单词顺序
+// 输入一个英文句子，翻转句子中单词的顺序，但单词内字符的顺序不变。为简单起见，标点符号和普通字母一样处理。例如输入字符串"I am a student. "，则输出"student. a am I"。
+// 示例 1：
+// 输入: "the sky is blue"
+// 输出: "blue is sky the"
+// var reverseWords = function(s) {
+//  return  s.trim().split(' ').filter(item => item !== "").reverse().join(" ")
+// };
+// console.log(reverseWords("a good   example"))
 	</script>
 
 </body>
