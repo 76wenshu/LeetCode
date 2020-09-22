@@ -2039,6 +2039,33 @@ nums       index     target
 // };
 
 // console.log(arrangeCoins(5))
+// 859. 亲密字符串
+// 给定两个由小写字母构成的字符串 A 和 B ，只要我们可以通过交换 A 中的两个字母得到与 B 相等的结果，就返回 true ；否则返回 false 。
+// 示例 1：
+// 输入： A = "ab", B = "ba"
+// 输出： true
+// var buddyStrings = function(A, B) {
+//     if(A.length!=B.length) return false;
+//     if(A.length<2) return false;
+//     var a=[],b=[],set={}
+//     for(var i=0;i<A.length;i++){
+//         if(set[A[i]]){
+//             set[A[i]]++;
+//         }else{
+//             set[A[i]]=1
+//         }
+//         if(A[i]!=B[i]){
+//             a.push(A[i]);
+//             b.push(B[i]);
+//             if(a.length>2) return false;
+//         }
+//     }
+//     // 没有重复的元素且存在0-1个可以交换的数
+//     if(a.length<2&&(Math.max.apply(null,Object.values(set))<2)) return false;
+//     if(a[0]==b[1]&&a[1]==b[0]) return true
+//     return false;
+// };
+// console.log(buddyStrings("ab","ba"))
 	</script>
 
 </body>
