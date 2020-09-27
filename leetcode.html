@@ -2160,6 +2160,23 @@ nums       index     target
 //         return arrs.reverse()
 //     }
 // };
+var isIsomorphic = function(s, t) {
+	debugger
+    let steArray = Array.from(new Set(s.split('')));
+    let steArrayNumber = []
+    let strArray =Array.from(new Set(t.split('')));
+     let strArrayNumber = []
+    for(let i of s){
+		console.log(i)
+        steArrayNumber.push(steArray.findIndex(item => item === i))
+    }
+    for(let j of t){
+		console.log(j)
+        strArrayNumber.push(strArray.findIndex(item => item === j))
+    }
+    return steArrayNumber.join('')===strArrayNumber.join('')
+};
+console.log(isIsomorphic('ab',"aa"))
 	</script>
 
 </body>
