@@ -2160,23 +2160,43 @@ nums       index     target
 //         return arrs.reverse()
 //     }
 // };
-var isIsomorphic = function(s, t) {
-	debugger
-    let steArray = Array.from(new Set(s.split('')));
-    let steArrayNumber = []
-    let strArray =Array.from(new Set(t.split('')));
-     let strArrayNumber = []
-    for(let i of s){
-		console.log(i)
-        steArrayNumber.push(steArray.findIndex(item => item === i))
-    }
-    for(let j of t){
-		console.log(j)
-        strArrayNumber.push(strArray.findIndex(item => item === j))
-    }
-    return steArrayNumber.join('')===strArrayNumber.join('')
-};
-console.log(isIsomorphic('ab',"aa"))
+// var isIsomorphic = function(s, t) {
+// 	debugger
+//     let steArray = Array.from(new Set(s.split('')));
+//     let steArrayNumber = []
+//     let strArray =Array.from(new Set(t.split('')));
+//      let strArrayNumber = []
+//     for(let i of s){
+// 		console.log(i)
+//         steArrayNumber.push(steArray.findIndex(item => item === i))
+//     }
+//     for(let j of t){
+// 		console.log(j)
+//         strArrayNumber.push(strArray.findIndex(item => item === j))
+//     }
+//     return steArrayNumber.join('')===strArrayNumber.join('')
+// };
+// console.log(isIsomorphic('ab',"aa"))
+
+// 961. 重复 N 次的元素
+// 在大小为 2N 的数组 A 中有 N+1 个不同的元素，其中有一个元素重复了 N 次。
+
+// 返回重复了 N 次的那个元素。
+
+ 
+// var repeatedNTimes = function(A) {
+//  let objectA = A.reduce((pre,cur)=>{
+//      pre[cur] = pre[cur] + 1 || 1
+//      return pre
+//  },{})
+//  for(let i in objectA){
+//      if(objectA[i] === A.length/2){
+//          return i
+//      }
+//  }
+// };
+
+// console.log(repeatedNTimes([1,2,3,3]))
 	</script>
 
 </body>
