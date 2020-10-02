@@ -2245,6 +2245,59 @@ nums       index     target
 //     return arr.map(item => { return arrsSort.findIndex(item2 => item === item2)+1 } )
 // };
 // console.log(arrayRankTransform([40,10,20,30]))
+// 231. 2的幂
+// 给定一个整数，编写一个函数来判断它是否是 2 的幂次方。
+// 示例 1:
+// 输入: 1
+// 输出: true
+// 解释: 20 = 1
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+
+//  var isPowerOfTwo = function(n) {
+//     return n > 0 && (n & (n-1)) == 0;
+// };
+var longestCommonPrefix = function(strs) {
+    // if(strs.some(item =>{return item ===''}) || strs.length === 0){
+    //     return ''
+    // }
+    // if(strs.length === 1){
+    //     return strs[0]
+    // }
+    // for(let i=0;i<strs[0].split('').length;i++){
+    //     let string = strs[0].substring(0,i+1)
+	// 	if(strs.every(item => {return item.substring(0,i+1) === strs[0]})){
+	// 		return strs[0]
+	// 	}
+    //     if(strs.every(item => {return item.substring(0,i+1)=== string}) === false){
+    //         if(string.length ===0 ){
+    //             return ''
+    //         }else{
+    //            return strs[0].substring(0,i) 
+    //         }
+    //     }
+    // }
+    let maxLengthArray =[]
+    for(let i=0; i<strs.length; i++){
+         maxLengthArray.push(strs[i].length)
+    }
+    let minStrs = strs[maxLengthArray.findIndex(item => item === Math.min(...maxLengthArray))]
+    let numberLeng = minStrs.length
+    for(let j=0;j<numberLeng;j++){
+        let numberBols = numberLeng-j
+        let strsBol = minStrs.substr(0,numberBols)
+        if(strs.every(item => item.includes(strsBol))){
+            return strsBol
+        }
+        if(j===numberLeng-1){
+            return 123
+        }
+    } 
+};
+console.log(longestCommonPrefix(["dog","racecar","car"]))
+
 	</script>
 
 </body>
