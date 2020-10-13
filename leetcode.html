@@ -2419,6 +2419,35 @@ nums       index     target
 //     }
 //     return number;
 // };
+// 819. 最常见的单词
+// 给定一个段落 (paragraph) 和一个禁用单词列表 (banned)。返回出现次数最多，同时不在禁用列表中的单词。
+// 题目保证至少有一个词不在禁用列表中，而且答案唯一。
+// 禁用列表中的单词用小写字母表示，不含标点符号。段落中的单词不区分大小写。答案都是小写字母。
+// 示例：
+// 输入: 
+// paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+// banned = ["hit"]
+// 输出: "ball"
+/**
+ * @param {string} paragraph
+ * @param {string[]} banned
+ * @return {string}
+ */
+//  var mostCommonWord = function(paragraph, banned) {
+//    let arr=paragraph.toLowerCase().split(/\W/).filter(v=> v&&!~banned.indexOf(v))
+//    var obj={}
+//    var max=0,word
+//    for(let i=0;i<arr.length;i++){
+//        let now=arr[i]
+//        obj[now]=obj[now]+1||1
+//        if(obj[now]>max){
+//            max=obj[now]
+//            word=now
+//        }
+//    } 
+//    return word
+// };
+
 	</script>
 
 </body>
