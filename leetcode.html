@@ -2560,6 +2560,44 @@ nums       index     target
 //     }
 //     return (S.length > output.length) ? output : S
 // };
+// 给你一个 严格升序排列 的正整数数组 arr 和一个整数 k 。
+// 请你找到这个数组里第 k 个缺失的正整数。
+// 示例 1：
+// 输入：arr = [2,3,4,7,11], k = 5
+// 输出：9
+// 解释：缺失的正整数包括 [1,5,6,8,9,10,12,13,...] 。第 5 个缺失的正整数为 9 。
+/**
+ * @param {number[]} arr
+ * @param {number} k
+ * @return {number}
+ */
+//  var findKthPositive = function(arr, k) {
+//     let arrs = []
+// 	debugger
+//     for(let i=1;i<=Math.max(...arr) + k;i++){
+// 		debugger
+//         if(!arr.includes(i)){
+// 			debugger
+//             arrs.push(i)
+//             console.log(arrs)
+//             if(arrs.length=== k){
+//                 return arrs[k-1]
+//             }
+//         }
+//     }
+// };
+// var findKthPositive = function(arr, k) {
+//     let j = 0
+//     for(let i=1;i<=Math.max(...arr) + k;i++){
+//         if(!arr.includes(i)){
+//             j++
+//             if(j===k){
+//                 return i
+//             }
+//         }
+//     }
+// };
+// console.log(findKthPositive([1,2,3,4],2))
 	</script>
 
 </body>
