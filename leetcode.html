@@ -2766,14 +2766,36 @@ nums       index     target
  * @param {string} s
  * @return {boolean}
  */
- var isPalindrome = function(s) {
-	 debugger
-	 console.log(123,'123');
-	// [\W|_]非字母数字的字符串排除下划线
-    return s = s.replace(/[\W|_]/g, '').toLowerCase(), s.split('').reverse().join('') === s
+//  var isPalindrome = function(s) {
+// 	 debugger
+// 	 console.log(123,'123');
+// 	// [\W|_]非字母数字的字符串排除下划线
+//     return s = s.replace(/[\W|_]/g, '').toLowerCase(), s.split('').reverse().join('') === s
 
+// };
+// isPalindrome("aba")
+
+// 121. 买卖股票的最佳时机
+// 给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。
+
+// 你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。
+
+// 返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+ let maxProfit = function(prices) {
+	 //设置两个变量一个事最大值一个事最小值
+    let max = 0, minprice = prices[0]
+    for(let i = 1; i < prices.length; i++) {
+		//每次都是把最小的付给minprice
+        minprice = Math.min(prices[i], minprice)
+		//最小值好后边元素之间的差第一次与0比较之后就带到其中对比
+        max = Math.max(max, prices[i] - minprice)
+    }
+    return max
 };
-isPalindrome("aba")
 
 	</script>
 
